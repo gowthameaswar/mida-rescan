@@ -1,0 +1,53 @@
+/* Header.css */
+.header {
+  background-color: #333;
+  padding: 10px 0;
+  color: white;
+}
+
+.header nav {
+  display: flex;
+  justify-content: center; /* Centers items horizontally */
+}
+
+.header nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  align-items: center; /* Aligns items vertically */
+  margin: 0;
+  width: 100%; /* Ensure the list takes full width */
+}
+
+.header nav ul li {
+  margin: 0 15px;
+}
+
+.header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.header nav ul li a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+}
+
+.header nav ul li.logout-button {
+  margin-left: auto; /* Pushes the logout button to the far right */
+}
+
+.header nav ul li.logout-button button {
+  background-color: #F44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.header nav ul li.logout-button button:hover {
+  background-color: #F44336;
+}

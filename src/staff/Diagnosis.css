@@ -1,0 +1,112 @@
+.diagnosis-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-field, .dropdown-select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.dropdown-select {
+    background-color: white;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dropdown-select:hover {
+    background-color: #f0f8ff;
+    border-color: #0056b3;
+}
+
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.upload-bar {
+    width: 45%;
+    max-width: 400px; /* Ensure consistency with other input fields */
+    background-color: #f5f5f5;
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative; /* Ensure file input covers the upload bar */
+    text-align: center; /* Center text inside the upload bar */
+}
+
+.upload-bar:hover {
+    background-color: #e9ecef;
+}
+
+.upload-bar input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.upload-label {
+    font-size: 16px;
+    color: #007bff;
+    pointer-events: none;
+    text-align: center;
+}
+
+.upload-label::before {
+    content: '📁 ';
+}
+
+.image-preview {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.analyze-button {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto 0;
+    padding: 10px;
+    background-color: #343a40;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.analyze-button:hover {
+    background-color: green;
+}

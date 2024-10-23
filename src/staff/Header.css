@@ -1,0 +1,148 @@
+/* General Header styles */
+header {
+    background-color: #343a40;
+    padding: 1px 20px; /* Increased padding to make the header taller */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensures it stays on top of other elements */
+    height: 80px; /* Set a fixed height if needed */
+}
+
+
+body {
+    margin: 0; /* To prevent unwanted margin on the body */
+    padding-top: 0; /* To align body content properly */
+}
+/* For the Navbar */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+}
+
+nav a, nav span {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 8px 12px;
+    position: relative;
+    cursor: pointer;
+}
+
+nav a::after, nav span::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #007bff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0; /* Set to 0 to remove extra margin */
+    left: 0;
+}
+
+nav a:hover::after, nav span:hover::after {
+    width: 100%;
+}
+
+nav a.active::after {
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: #343a40;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    min-width: 120px;
+    text-align: right;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.dropdown-menu button {
+    background: #343a40;
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: auto;
+    text-align: center;
+    font-size: 14px;
+    transition: background 0.3s;
+    margin: 0 10px;
+}
+
+.dropdown-menu button:hover {
+    background: #dc3545;
+}
+
+/* Hamburger menu */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color: #343a40;
+        display: none;
+    }
+
+    nav.active ul {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    nav a {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+
+    nav a.active::after {
+        display: none;
+    }
+}
