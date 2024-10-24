@@ -1,6 +1,4 @@
-Here's an attractive `README.md` for the MIDA React app:
 
-```markdown
 # MIDA React Application
 
 MIDA (Medical Imaging Diagnostic Assistant) is a comprehensive medical diagnostic platform designed to assist healthcare professionals in analyzing and diagnosing medical images. The frontend of this platform is built using **React**, providing a dynamic, interactive, and user-friendly interface for managing patients, viewing diagnostic results, and generating reports. The system integrates seamlessly with backend services to retrieve patient data, diagnosis details, and medical reports.
