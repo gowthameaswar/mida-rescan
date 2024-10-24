@@ -1,5 +1,5 @@
 
-# MIDA React Application
+# Medical Imaging Diagnostic Assistant ⚕️[Live URL](https://mida-rescan.vercel.app/auth/login) 
 
 MIDA (Medical Imaging Diagnostic Assistant) is a comprehensive medical diagnostic platform designed to assist healthcare professionals in analyzing and diagnosing medical images. The frontend of this platform is built using **React**, providing a dynamic, interactive, and user-friendly interface for managing patients, viewing diagnostic results, and generating reports. The system integrates seamlessly with backend services to retrieve patient data, diagnosis details, and medical reports.
 
@@ -62,6 +62,19 @@ We welcome contributions from developers! If you'd like to contribute to MIDA, f
 3. Commit your changes (`git commit -m 'Add new feature'`).
 4. Push to the branch (`git push origin feature/your-feature`).
 5. Open a pull request.
+
+## Output Screens
+
+![image](https://github.com/user-attachments/assets/ae6c1c80-b127-4f39-822d-3438361e2cbb)
+![image](https://github.com/user-attachments/assets/30ce7735-5b34-4cc1-a750-3116255f4490)
+![image](https://github.com/user-attachments/assets/7436b5f1-df9a-4aa7-93e9-5f963cb386e0)
+![image](https://github.com/user-attachments/assets/1141ba53-722c-4020-93d1-61ecbffe2bb2)
+![image](https://github.com/user-attachments/assets/b62268d7-7fb0-4553-8632-b49a103bb95e)
+![image](https://github.com/user-attachments/assets/02171325-ad0e-413b-a4af-ab80bc3b0aba)
+![image](https://github.com/user-attachments/assets/748ef77d-278e-49ae-bb54-630122234392)
+
+
+
 
 ## License
 
