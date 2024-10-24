@@ -65,7 +65,5 @@ We welcome contributions from developers! If you'd like to contribute to MIDA, f
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT [License](LICENSE)
 ```
-
-This format makes the README clear, attractive, and easy to follow for developers. Let me know if you need any changes!
