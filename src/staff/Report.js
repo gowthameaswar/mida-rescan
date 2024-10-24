@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from './Header'; // Import the Header component
+import { PDFDocument, rgb } from 'pdf-lib'; // Import pdf-lib
 import './Report.css';
 
 const ReportDetails = () => {
@@ -30,13 +30,145 @@ const ReportDetails = () => {
         fetchReport();
     }, [reportId]);
 
+    const handleDownloadPDF = async () => {
+        // Fetch the template PDF
+        const templateBytes = await fetch('http://localhost:5000/api/template-pdf').then(res => res.arrayBuffer());
+        const pdfDoc = await PDFDocument.load(templateBytes);
+        const page = pdfDoc.getPage(0);
+        
+        // Starting Y position after header
+        let yPosition = page.getHeight() - 150;
+    
+        // Title
+        page.drawText('Report Details', {
+            x: 50,
+            y: yPosition,
+            size: 18,
+            color: rgb(0, 0, 0),
+        });
+        yPosition -= 30;
+    
+        // Draw Patient Information Table
+        page.drawText('Patient Information', { x: 50, y: yPosition, size: 14 });
+        yPosition -= 20;
+        
+        // Draw Table Borders
+        const tableX = 50;
+        const tableWidth = 500;
+        const rowHeight = 20;
+        
+        const patientInfo = [
+            ['Name', report.patientName],
+            ['Age', report.age],
+            ['Sex', report.sex],
+            ['Phone', report.phone]
+        ];
+        
+        patientInfo.forEach((row, rowIndex) => {
+            const rowY = yPosition - (rowIndex * rowHeight);
+            page.drawLine({
+                start: { x: tableX, y: rowY },
+                end: { x: tableX + tableWidth, y: rowY },
+                thickness: 1,
+                color: rgb(0, 0, 0),
+            });
+            page.drawText(row[0], { x: tableX + 5, y: rowY - 15, size: 12 });
+            page.drawText(row[1], { x: tableX + 150, y: rowY - 15, size: 12 });
+        });
+    
+        // Last row border for the table
+        page.drawLine({
+            start: { x: tableX, y: yPosition - patientInfo.length * rowHeight },
+            end: { x: tableX + tableWidth, y: yPosition - patientInfo.length * rowHeight },
+            thickness: 1,
+            color: rgb(0, 0, 0),
+        });
+        yPosition -= (patientInfo.length * rowHeight + 30);
+    
+        // Draw Scan Details Table
+        page.drawText('Scan Details', { x: 50, y: yPosition, size: 14 });
+        yPosition -= 20;
+    
+        const scanDetails = [
+            ['Scan Organ', report.organ],
+            ['Scan Type', report.scanType],
+        ];
+    
+        scanDetails.forEach((row, rowIndex) => {
+            const rowY = yPosition - (rowIndex * rowHeight);
+            page.drawLine({
+                start: { x: tableX, y: rowY },
+                end: { x: tableX + tableWidth, y: rowY },
+                thickness: 1,
+                color: rgb(0, 0, 0),
+            });
+            page.drawText(row[0], { x: tableX + 5, y: rowY - 15, size: 12 });
+            page.drawText(row[1], { x: tableX + 150, y: rowY - 15, size: 12 });
+        });
+        page.drawLine({
+            start: { x: tableX, y: yPosition - scanDetails.length * rowHeight },
+            end: { x: tableX + tableWidth, y: yPosition - scanDetails.length * rowHeight },
+            thickness: 1,
+            color: rgb(0, 0, 0),
+        });
+        yPosition -= (scanDetails.length * rowHeight + 30);
+    
+        // Embed and draw the scan image
+        const imageUrl = `http://localhost:5000/uploads/${report.imagePath.split('/').pop()}`;
+        const imageBytes = await fetch(imageUrl).then(res => res.arrayBuffer());
+        const jpegImage = await pdfDoc.embedJpg(imageBytes);
+        const boxWidth = 130, boxHeight = 100;
+        page.drawImage(jpegImage, { x: 50, y: yPosition - boxHeight, width: boxWidth, height: boxHeight });
+        yPosition -= (boxHeight + 20);
+    
+        // Additional text like findings, etc.
+        page.drawText(`Generated On: ${new Date(report.generatedOn).toLocaleString()}`, { x: 50, y: yPosition, size: 12 });
+        yPosition -= 20;
+        page.drawText('Report Findings:', { x: 50, y: yPosition, size: 14 });
+        yPosition -= 20;
+        page.drawText(report.outcome, { x: 50, y: yPosition, size: 12 });
+        
+        // Draw Report Content
+        yPosition -= 25; // Move down for the content
+        page.drawText('Report Content:', {
+            x: 50,
+            y: yPosition,
+            size: 14,
+            color: rgb(0, 0, 0),
+        });
+        yPosition -= 15; // Move down for the content
+        page.drawText(report.content, {
+            x: 50,
+            y: yPosition,
+            size: 12,
+            color: rgb(0, 0, 0),
+            maxWidth: page.getWidth() - 100, // Limit the width of the text
+        });
+    
+        // Save the PDF
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+    
+        // Sanitize patient name for filename
+        const sanitizedPatientName = report.patientName.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        const filename = `${sanitizedPatientName}_report.pdf`; // Set filename
+    
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename; // Use sanitized patient name in filename
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+    
+    
+    
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
     return (
         <div>
-            <Header /> {/* Include the Header component */}
-            <div className="report-details-container">
+            <div className="report-details-container" id="pdf-content">
                 <h1>Report Details</h1>
 
                 {/* Patient Information Table */}
@@ -81,27 +213,32 @@ const ReportDetails = () => {
                                     src={`http://localhost:5000/uploads/${report.imagePath.split('/').pop()}`} 
                                     alt={`Scan of ${report.patientName}`} 
                                     className="report-image" 
+                                    style={{ maxWidth: '100%', height: 'auto' }}
                                 />
                             </td>
                         </tr>
                     </tbody>
                 </table>
+
                 <p><strong>Generated On:</strong> {new Date(report.generatedOn).toLocaleString()}</p>
-                    <p><strong>Report ID:</strong> {report.id}</p>
+                <p><strong>Report ID:</strong> {report.id}</p>
+
                 <div className="report-findings">
                     <h2>Report Findings</h2>
                     <p><strong>Outcome:</strong> {report.outcome}</p>
-                    
                 </div>
 
                 <div className="report-content">
-                    
                     <p>{report.content}</p>
                 </div>
-
-                {/* Back Button */}
-                <a href="/staff/report-history" className="back-button">Back to Report History</a>
             </div>
+
+            {/* Button Section */}
+            <div className="button-section">
+    <button onClick={handleDownloadPDF} className="download-button">Download PDF</button>
+    <a href="/staff/report-history" className="back-button">Back to Report History</a>
+</div>
+
         </div>
     );
 };

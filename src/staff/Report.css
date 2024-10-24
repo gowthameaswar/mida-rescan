@@ -39,7 +39,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     margin-top: 10px;
 }
-
+/* 
 .back-button {
     display: inline-block;
     background-color: #28a745;
@@ -62,8 +62,14 @@
 .back-button:active {
     background-color: #1e7e34;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
+} */
 
+.button-section {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center horizontally */
+    margin-top: 20px; /* Add margin to the top */
+}
 
 .download-button {
     padding: 10px 20px;
@@ -73,10 +79,34 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 20px;
+    margin-bottom: 10px; /* Space between buttons */
+    width: 200px; /* Set a width for consistency */
 }
 
 .download-button:hover {
     background-color: #45a049;
 }
 
+.back-button {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 200px; /* Set a width for consistency */
+}
+
+.back-button:hover {
+    background-color: #218838;
+}
+
+.back-button:active {
+    background-color: #1e7e34;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}

@@ -61,3 +61,22 @@
   text-decoration: underline;
 }
 
+.password-container {
+  position: relative;
+  display: flex;
+}
+
+.password-input {
+  flex: 1;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}

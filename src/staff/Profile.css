@@ -31,8 +31,8 @@
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-
-.password-modal button {
+/* Modal Buttons */
+.custom-password-modal-button {
     padding: 10px 15px;
     margin: 10px 5px;
     background-color: #007bff;
@@ -42,11 +42,12 @@
     cursor: pointer;
 }
 
-.password-modal button:hover {
+.custom-password-modal-button:hover {
     background-color: #0056b3;
 }
 
-.change-password-button {
+/* Change Password Button */
+.custom-change-password-button {
     background-color: #f39c12;
     color: white;
     padding: 10px;
@@ -55,19 +56,43 @@
     cursor: pointer;
 }
 
-.change-password-button:hover {
+.custom-change-password-button:hover {
     background-color: #e67e22;
 }
 
 /* Error message */
-.error {
+.custom-error {
     color: red;
     text-align: center;
 }
 
+/* Non-clickable Field */
 .non-clickable-field {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0f3;
     pointer-events: none;
     border: 1px solid #ddd;
     color: #888;
+}
+
+/* Password Field Container */
+.custom-password-container {
+    position: relative;
+    display: flex;
+}
+
+/* Input field with password */
+.custom-auth-input {
+    flex: 1;
+}
+
+/* Toggle Button for Show/Hide Password */
+.custom-password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
 }
