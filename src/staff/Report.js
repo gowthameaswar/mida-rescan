@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PDFDocument, rgb } from 'pdf-lib'; // Import pdf-lib
 import './Report.css';
+import Header from './Header'; // Import the Header component
 
 const ReportDetails = () => {
     const { reportId } = useParams();
@@ -161,13 +162,14 @@ const ReportDetails = () => {
         URL.revokeObjectURL(url);
     };
     
-    
-    
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
     return (
         <div>
+            {/* Add the Header component */}
+            <Header />
+
             <div className="report-details-container" id="pdf-content">
                 <h1>Report Details</h1>
 
@@ -235,9 +237,9 @@ const ReportDetails = () => {
 
             {/* Button Section */}
             <div className="button-section">
-    <button onClick={handleDownloadPDF} className="download-button">Download PDF</button>
-    <a href="/staff/report-history" className="back-button">Back to Report History</a>
-</div>
+                <button onClick={handleDownloadPDF} className="download-button">Download PDF</button>
+                <a href="/staff/report-history" className="back-button">Back to Report History</a>
+            </div>
 
         </div>
     );

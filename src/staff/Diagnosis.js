@@ -121,87 +121,90 @@ const Diagnosis = () => {
 
     return (
         <div>
-            <Header />
-            <div className="diagnosis-container">
-                <h1>Diagnosis</h1>
+            <div className="diagnosis-page">
+                <Header />
+                <div className="diagnosis-container">
+                    <h1>Diagnosis</h1>
+                    <div className="form-box">
+                        <div className="input-section">
+                            <input
+                                type="text"
+                                placeholder="Patient Name"
+                                value={patientName}
+                                onChange={(e) => setPatientName(e.target.value)}
+                                className="input-field"
+                            />
+                            <input
+                                type="number"
+                                placeholder="Age"
+                                value={age}
+                                onChange={(e) => setAge(e.target.value)}
+                                className="input-field"
+                            />
+                            <input
+                                type="tel"
+                                placeholder="Phone"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                className="input-field"
+                            />
+                            <select value={sex} onChange={(e) => setSex(e.target.value)} className="dropdown-select">
+                                <option disabled>Select sex</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <select value={organ} onChange={handleOrganChange} className="dropdown-select">
+                                <option disabled>Select organ</option>
+                                <option value="Brain">Brain</option>
+                                <option value="Chest">Chest</option>
+                            </select>
+                            <select
+                                value={scanType}
+                                onChange={(e) => setScanType(e.target.value)}
+                                className="dropdown-select"
+                            >
+                                <option disabled>Select scan type</option>
+                                <option value="CT">CT</option>
+                                <option value="MRI" disabled={organ === 'Chest'}>MRI</option>
+                                <option value="X-ray" disabled={organ === 'Brain'}>X-ray</option>
+                            </select>
+                        </div>
 
-                <div className="input-section">
-                    <input
-                        type="text"
-                        placeholder="Patient Name"
-                        value={patientName}
-                        onChange={(e) => setPatientName(e.target.value)}
-                        className="input-field"
-                    />
-                    <input
-                        type="number"
-                        placeholder="Age"
-                        value={age}
-                        onChange={(e) => setAge(e.target.value)}
-                        className="input-field"
-                    />
-                    <input
-                        type="tel"
-                        placeholder="Phone"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="input-field"
-                    />
-                    <select value={sex} onChange={(e) => setSex(e.target.value)} className="dropdown-select">
-                        <option disabled>Select sex</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <select value={organ} onChange={handleOrganChange} className="dropdown-select">
-                        <option disabled>Select organ</option>
-                        <option value="Brain">Brain</option>
-                        <option value="Chest">Chest</option>
-                    </select>
-                    <select
-                        value={scanType}
-                        onChange={(e) => setScanType(e.target.value)}
-                        className="dropdown-select"
-                    >
-                        <option disabled>Select scan type</option>
-                        <option value="CT">CT</option>
-                        <option value="MRI" disabled={organ === 'Chest'}>MRI</option>
-                        <option value="X-ray" disabled={organ === 'Brain'}>X-ray</option>
-                    </select>
+                        <div className="upload-section">
+                            <div className="upload-bar">
+                                <input type="file" id="file-upload" onChange={handleFileChange} />
+                                <label htmlFor="file-upload" className="upload-label">
+                                    {file ? file.name : 'Choose a file'}
+                                </label>
+                            </div>
+                        </div>
+
+                        <button onClick={handleAnalyze} className="analyze-button">
+                            Submit
+                        </button>
+                    </div>
+
+                    {imagePreview && (
+                        <div className="image-preview">
+                            <h2>Image Preview:</h2>
+                            <img src={imagePreview} alt="Uploaded" />
+                        </div>
+                    )}
+
+                    {result && (
+                        <div className="result-section">
+                            <h2>Result:</h2>
+                            <p>{result}</p>
+                        </div>
+                    )}
+
+                    {detailsSaved && (
+                        <div className="success-message">
+                            <p>Details saved</p>
+                        </div>
+                    )}
                 </div>
-
-                <div className="upload-section">
-                    <div className="upload-bar">
-                        <input type="file" id="file-upload" onChange={handleFileChange} />
-                        <label htmlFor="file-upload" className="upload-label">
-                            {file ? file.name : 'Choose a file'}
-                        </label>
-                    </div>
-                </div>
-
-                {imagePreview && (
-                    <div className="image-preview">
-                        <h2>Image Preview:</h2>
-                        <img src={imagePreview} alt="Uploaded" />
-                    </div>
-                )}
-
-                <button onClick={handleAnalyze} className="analyze-button">
-                    Submit
-                </button>
-
-                {result && (
-                    <div className="result-section">
-                        <h2>Result:</h2>
-                        <p>{result}</p>
-                    </div>
-                )}
-
-                {detailsSaved && (
-                    <div className="success-message">
-                        <p>Details saved</p>
-                    </div>
-                )}
             </div>
         </div>
     );

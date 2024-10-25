@@ -59,20 +59,43 @@
   margin-bottom: 20px;
 }
 
+/* Staff Management Page Styles */
+.staff-management {
+  background-image: url('../assets/bg4.jpeg'); /* Set the path to your image */
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents image repetition */
+  min-height: 100vh; /* Ensure the div takes up at least the full viewport height */
+}
+
+/* Adjust text visibility against the background */
+.staff-management h2, .staff-management table, .add-staff-button, .add-staff-form {
+  background-color: rgba(255, 255, 255, 0.8); /* Add a light background for contrast */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .add-staff-button button {
   background-color: #007bff;
   color: white;
   border: none;
-  margin-top: 10px;
-  margin-right: 10px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+  margin-top: 20px;
 }
 
 .add-staff-button button:hover {
   background-color: #0056b3;
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+  .staff-management {
+    padding: 10px;
+  }
 }
 
 /* Add Staff Form */

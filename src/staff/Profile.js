@@ -1,7 +1,8 @@
+// Profile.js
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import axios from 'axios';
-import './Profile.css'; // Optional: Add styles for the profile page
+import './Profile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,7 +10,7 @@ const Profile = () => {
     const [profile, setProfile] = useState(null);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
-    const [showPasswordModal, setShowPasswordModal] = useState(false); // Control modal visibility
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -37,30 +38,29 @@ const Profile = () => {
         }
 
         axios.post('http://localhost:5000/api/staff/change-password', {
-            email: profile.email,  // Fetch email from profile
-            userType: 'staff',      // Pre-fill as 'staff'
+            email: profile.email,
+            userType: 'staff',
             oldPassword,
             newPassword
         }).then(response => {
             alert('Password changed successfully. A confirmation email has been sent.');
 
-            // Clear the password fields after success
             setOldPassword('');
             setNewPassword('');
             setConfirmPassword('');
-            setPasswordError(''); // Clear any error messages
-            setShowPasswordModal(false); // Hide the modal after success
+            setPasswordError('');
+            setShowPasswordModal(false);
         }).catch(error => {
             setPasswordError(error.response?.data?.error || 'Error changing password');
         });
     };
 
     return (
-        <div>
+        <div className="profile-page">
             <Header />
             <div className="profile-container">
                 {loading ? (
-                    <div className="loading-spinner"></div> // Spinner with correct class name
+                    <div className="loading-spinner"></div>
                 ) : (
                     <>
                         {error && <p className="error">{error}</p>}
@@ -71,10 +71,9 @@ const Profile = () => {
                                 <p><strong>Email:</strong> {profile.email}</p>
                                 <p><strong>Role:</strong> {profile.role}</p>
                                 <p><strong>Hospital Name:</strong> {profile.hospitalName}</p>
-                                <br></br>
                                 <button 
-                                className="custom-change-password-button"
-                                onClick={() => setShowPasswordModal(true)}>
+                                    className="custom-change-password-button"
+                                    onClick={() => setShowPasswordModal(true)}>
                                     Change Password
                                 </button>
                             </div>
@@ -84,30 +83,23 @@ const Profile = () => {
                     </>
                 )}
 
-                {/* Password Change Modal */}
                 {showPasswordModal && (
                     <div className="password-modal-overlay">
                         <div className="password-modal">
                             <h2>Change Password</h2>
                             {passwordError && <p className="error">{passwordError}</p>}
-
-                            {/* Display email (non-editable) */}
                             <input
                                 type="email"
                                 value={profile?.email || ''}
                                 readOnly
                                 className="non-clickable-field"
                             />
-
-                            {/* Display user type (non-editable) */}
                             <input
                                 type="text"
                                 value="staff"
                                 readOnly
                                 className="non-clickable-field"
                             />
-
-                            {/* Old Password with eye toggle */}
                             <div className="password-container">
                                 <input
                                     type={showOldPassword ? 'text' : 'password'}
@@ -123,8 +115,6 @@ const Profile = () => {
                                     <FontAwesomeIcon icon={showOldPassword ? faEyeSlash : faEye} />
                                 </button>
                             </div>
-
-                            {/* New Password with eye toggle */}
                             <div className="password-container">
                                 <input
                                     type={showNewPassword ? 'text' : 'password'}
@@ -140,8 +130,6 @@ const Profile = () => {
                                     <FontAwesomeIcon icon={showNewPassword ? faEyeSlash : faEye} />
                                 </button>
                             </div>
-
-                            {/* Confirm Password with eye toggle */}
                             <div className="password-container">
                                 <input
                                     type={showConfirmPassword ? 'text' : 'password'}
@@ -157,13 +145,12 @@ const Profile = () => {
                                     <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
                                 </button>
                             </div>
-
                             <button 
-                            className="custom-password-modal-button"
-                            onClick={handlePasswordChange}>Submit</button>
+                                className="custom-password-modal-button"
+                                onClick={handlePasswordChange}>Submit</button>
                             <button 
-                            className="custom-password-modal-button"
-                            onClick={() => setShowPasswordModal(false)}>Cancel</button>
+                                className="custom-password-modal-button"
+                                onClick={() => setShowPasswordModal(false)}>Cancel</button>
                         </div>
                     </div>
                 )}

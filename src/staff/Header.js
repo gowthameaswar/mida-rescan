@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FaTachometerAlt, FaStethoscope, FaFileMedical, FaUserCircle, FaSignOutAlt } from 'react-icons/fa'; // Importing icons
 import './Header.css';
 
 const Header = () => {
     const [username, setUsername] = useState('');
     const [showDropdown, setShowDropdown] = useState(false);
-    const [showMenu, setShowMenu] = useState(false); // State to control the hamburger menu
+    const [showMenu, setShowMenu] = useState(false); 
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/staff/profile')  // Adjust the endpoint if necessary
+        axios.get('http://localhost:5000/api/staff/profile')  
             .then(response => {
-                setUsername(response.data.name); // Adjust according to the response structure
+                setUsername(response.data.name); 
             })
             .catch(error => {
                 console.error('Error fetching profile:', error);
@@ -22,7 +23,7 @@ const Header = () => {
     const handleLogout = () => {
         axios.post('http://localhost:5000/api/logout')
             .then(() => {
-                navigate('/auth/login');  // Redirect to login page
+                navigate('/auth/login');  
             })
             .catch(error => {
                 console.error('Error logging out:', error);
@@ -41,23 +42,22 @@ const Header = () => {
                     <ul>
                         <li>
                             <NavLink to="/staff/dashboard" activeClassName="active">
-                                Dashboard
+                                <FaTachometerAlt /> Dashboard
                             </NavLink>
                         </li>
-                        
                         <li>
                             <NavLink to="/staff/diagnosis" activeClassName="active">
-                                Diagnosis
+                                <FaStethoscope /> Diagnosis
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/staff/report-history" activeClassName="active">
-                                Report History
+                                <FaFileMedical /> Report History
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/staff/profile" activeClassName="active">
-                                Profile
+                                <FaUserCircle /> Profile
                             </NavLink>
                         </li>
                         <li className="dropdown">
@@ -67,7 +67,9 @@ const Header = () => {
                             </span>
                             {showDropdown && (
                                 <div className="dropdown-menu">
-                                    <button onClick={handleLogout}>Logout</button>
+                                    <button onClick={handleLogout}>
+                                        <FaSignOutAlt /> Logout
+                                    </button>
                                 </div>
                             )}
                         </li>

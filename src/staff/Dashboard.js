@@ -25,7 +25,7 @@ const Dashboard = () => {
     };
 
     return (
-        <div>
+        <div className="dashboard-page"> {/* Add this class name */}
             <Header />
             <div className="dashboard-container">
                 {loading ? (
@@ -37,30 +37,28 @@ const Dashboard = () => {
                             <div className="dashboard-content">
                                 <h1>Welcome, {profile.name}</h1>
                                 <div className="dashboard-info">
-                                    <div className="profile-card">
+                                    <div className="profile-card-txt">
                                         <h2>Your Profile</h2>
                                         <p><strong>Hospital:</strong> {profile.hospitalName}</p>
                                         <p><strong>Email:</strong> {profile.email}</p>
-                                        {/* <p><strong>Phone:</strong> {profile.phone}</p> */}
                                     </div>
-                                    <br></br>
-
+                                    <br />
+    
                                     <div className="stats-card">
                                         <h2>Overview</h2>
                                         <div className="stats-grid">
                                             <div className="stat-item">
                                                 <h3>Reports Submitted</h3>
-                                                <p>{profile.reportsSubmitted}</p> {/* Dynamic value */}
+                                                <p>{profile.reportsSubmitted}</p>
                                             </div>
-                                            
                                             <div className="stat-item">
                                                 <h3>Total Patients</h3>
-                                                <p>{profile.totalPatients}</p> {/* Dynamic value */}
+                                                <p>{profile.totalPatients}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
+    
                                 <div className="recent-activity">
                                     <h2>Recent Activity</h2>
                                     {profile.latestActivity ? (
@@ -80,6 +78,5 @@ const Dashboard = () => {
             </div>
         </div>
     );
-};
-
+};    
 export default Dashboard;

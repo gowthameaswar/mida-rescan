@@ -4,6 +4,25 @@
     margin: 0 auto;
     text-align: center;
 }
+.diagnosis-container h1 {
+    color: rgb(241, 241, 241);
+}
+
+.diagnosis-page {
+    background-image: url('../assets/bg2.jpeg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.form-box {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
 
 .input-section {
     display: flex;
@@ -20,7 +39,7 @@
     border: 2px solid #007bff;
     border-radius: 8px;
     font-size: 16px;
-    box-sizing: border-box; /* Ensures padding is included in the width */
+    box-sizing: border-box;
 }
 
 .dropdown-select {
@@ -45,60 +64,35 @@
 
 .upload-bar {
     width: 45%;
-    max-width: 400px; /* Ensure consistency with other input fields */
-    background-color: #f5f5f5;
+    max-width: 400px;
+    background-color: #f8f9fa;
     border: 2px dashed #007bff;
     border-radius: 8px;
-    padding: 16px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    position: relative; /* Ensure file input covers the upload bar */
-    text-align: center; /* Center text inside the upload bar */
 }
 
 .upload-bar:hover {
-    background-color: #e9ecef;
+    background-color: #e6f2ff;
 }
 
 .upload-bar input[type="file"] {
-    opacity: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    cursor: pointer;
+    display: none;
 }
 
 .upload-label {
-    font-size: 16px;
     color: #007bff;
-    pointer-events: none;
-    text-align: center;
-}
-
-.upload-label::before {
-    content: '📁 ';
-}
-
-.image-preview {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.image-preview img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-top: 20px;
+    cursor: pointer;
 }
 
 .analyze-button {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin: 20px auto 0;
-    padding: 10px;
-    background-color: #343a40;
+    padding: 10px 20px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 8px;
@@ -108,5 +102,23 @@
 }
 
 .analyze-button:hover {
-    background-color: green;
+    background-color: #0056b3;
+}
+
+.image-preview {
+    margin-top: 20px;
+}
+
+.image-preview img {
+    max-width: 100%;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+}
+
+.result-section {
+    margin-top: 20px;
+}
+
+.result-section h2 {
+    color: #007bff;
 }

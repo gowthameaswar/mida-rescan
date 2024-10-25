@@ -63,14 +63,14 @@ const ReportHistory = () => {
     };
 
     return (
-        <div>
+        <div className="report-history-page"> {/* Add this class name */}
             <Header />
             <div className="report-history-container">
                 <h1>Report History</h1>
-
+    
                 {loading && <p>Loading...</p>}
                 {error && <p>{error}</p>}
-
+    
                 {!loading && !error && (
                     <div className="report-list">
                         {reports.length > 0 ? (
@@ -87,13 +87,13 @@ const ReportHistory = () => {
                                         <th>Findings</th>
                                         <th>Report ID</th>
                                         <th>Generated On</th>
-                                        <th>Actions</th> {/* Updated column for actions */}
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {reports.map((report) => {
-                                        const shortContent = `${report.content.substring(0, 100)}...`; // Preview of the content
-
+                                        const shortContent = `${report.content.substring(0, 100)}...`;
+    
                                         return (
                                             <tr key={report.id}>
                                                 <td>{report.patientName}</td>
@@ -133,6 +133,7 @@ const ReportHistory = () => {
             </div>
         </div>
     );
+    
 };
 
 export default ReportHistory;

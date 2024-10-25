@@ -1,5 +1,11 @@
+
+
+
 .report-history-container {
     padding: 20px;
+}
+.report-history-container h1,p{
+    color: white;
 }
 
 .report-table {
@@ -21,6 +27,9 @@
 }
 
 .report-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.report-table tr:nth-child(odd) {
     background-color: #f9f9f9;
 }
 
@@ -72,4 +81,12 @@
 
 .findings:hover {
     color: #0056b3; /* Darker shade on hover */
+}
+
+.report-history-page {
+    background-image: url('../assets/bg6.jpg'); /* Replace with your image path */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background */
+    min-height: 100vh; /* Ensure it takes up the full height of the viewport */
+
 }
