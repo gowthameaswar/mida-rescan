@@ -1,70 +1,82 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Medical Imaging Diagnostic Assistant ⚕️[Live URL](https://mida-rescan.vercel.app/auth/login) 
 
-## Available Scripts
+MIDA (Medical Imaging Diagnostic Assistant) is a comprehensive medical diagnostic platform designed to assist healthcare professionals in analyzing and diagnosing medical images. The frontend of this platform is built using **React**, providing a dynamic, interactive, and user-friendly interface for managing patients, viewing diagnostic results, and generating reports. The system integrates seamlessly with backend services to retrieve patient data, diagnosis details, and medical reports.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Dashboard**: Overview of patient details, diagnostics, and reports.
+- **Diagnosis**: Access and analyze diagnostic results, including medical images like CT scans and MRIs.
+- **Reports**: Generate, view, and download medical reports for patients.
+- **Profile Management**: Update staff profiles and manage user information.
+- **Staff Management**: Handle roles, permissions, and management of medical staff.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React**: For creating a dynamic, component-based frontend that efficiently handles state and UI updates.
+- **CSS**: Custom styling for an intuitive and responsive user interface.
+- **Axios**: For making API requests to the backend and handling data fetches.
+- **React Router**: For seamless navigation across various sections of the application.
+- **JavaScript (ES6)**: Core programming language for developing the logic and functionality of the app.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+Make sure you have Node.js installed. You can download it from [here](https://nodejs.org/).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/gowthameaswar/mida-rescan.git
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The app will run locally at `http://localhost:3000`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Build for Production
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To create a production build, run:
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This will generate optimized, minified static files for deployment.
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+We welcome contributions from developers! If you'd like to contribute to MIDA, follow these steps:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Fork the repository.
+2. Create a new feature branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a pull request.
 
-### Code Splitting
+## Output Screens
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![image](https://github.com/user-attachments/assets/ae6c1c80-b127-4f39-822d-3438361e2cbb)
+![image](https://github.com/user-attachments/assets/30ce7735-5b34-4cc1-a750-3116255f4490)
+![image](https://github.com/user-attachments/assets/7436b5f1-df9a-4aa7-93e9-5f963cb386e0)
+![image](https://github.com/user-attachments/assets/1141ba53-722c-4020-93d1-61ecbffe2bb2)
+![image](https://github.com/user-attachments/assets/b62268d7-7fb0-4553-8632-b49a103bb95e)
+![image](https://github.com/user-attachments/assets/02171325-ad0e-413b-a4af-ab80bc3b0aba)
+![image](https://github.com/user-attachments/assets/748ef77d-278e-49ae-bb54-630122234392)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT [License](LICENSE)
+```
